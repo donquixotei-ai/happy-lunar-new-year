@@ -1,0 +1,258 @@
+:root {
+    --primary-red: #D6001C;
+    --dark-red: #8B0000;
+    --gold: #FFD700;
+    --light-gold: #FFF1A0;
+    --text-white: #FFFFFF;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at center, #3d0000 0%, #0a0000 100%);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Lanterns */
+.lantern-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.lantern {
+    position: absolute;
+    width: 60px;
+    height: 80px;
+    background: var(--primary-red);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(214, 0, 28, 0.6);
+    animation: sway 4s ease-in-out infinite alternate, float 15s linear infinite;
+}
+
+.lantern::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 10px;
+    background: var(--gold);
+    border-radius: 5px;
+}
+
+.lantern::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 25px;
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+}
+
+@keyframes sway {
+    from { transform: rotate(-5deg) translateX(0); }
+    to { transform: rotate(5deg) translateX(10px); }
+}
+
+@keyframes float {
+    from { bottom: -100px; }
+    to { bottom: 110%; }
+}
+
+/* Main Container */
+.container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    width: 90%;
+    max-width: 1000px;
+    padding: 2rem;
+}
+
+.header {
+    margin-bottom: 3rem;
+}
+
+.chinese-title {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 6rem;
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    margin-bottom: 0.5rem;
+}
+
+.sub-title {
+    font-size: 2.5rem;
+    letter-spacing: 5px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: var(--light-gold);
+}
+
+.year-info {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0.5rem;
+}
+
+/* Countdown */
+.timer {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.time-block {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 1.5rem;
+    border-radius: 15px;
+    min-width: 120px;
+    transition: transform 0.3s ease;
+}
+
+.time-block:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: var(--gold);
+}
+
+.time-block span {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.time-block label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.status-text {
+    font-style: italic;
+    color: var(--gold);
+    opacity: 0.8;
+}
+
+/* Video Section */
+.hidden {
+    display: none !important;
+}
+
+.video-section {
+    animation: fadeIn 1s ease forwards;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(214, 0, 28, 0.4);
+    border: 4px solid var(--gold);
+    margin: 2rem 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.celebration-msg {
+    margin-top: 2rem;
+}
+
+.glow-text {
+    font-size: 4rem;
+    color: var(--gold);
+    text-shadow: 0 0 30px var(--gold);
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); text-shadow: 0 0 30px var(--gold); }
+    50% { transform: scale(1.05); text-shadow: 0 0 50px var(--gold); }
+}
+
+.btn-primary {
+    background: var(--gold);
+    color: #000;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    text-transform: uppercase;
+}
+
+.btn-primary:hover {
+    background: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--gold);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+#confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}

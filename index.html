@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunar New Year Countdown 2026 | Year of the Horse</title>
+    <meta name="description" content="Witness the spectacular countdown to the Chinese New Year 2026. Join us for a dazzling display of tradition and light.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <!-- Background Lanterns -->
+    <div class="lantern-container" id="lanternContainer"></div>
+
+    <main class="container">
+        <header class="header animate-fade-in">
+            <h1 class="chinese-title">新年快乐</h1>
+            <h2 class="sub-title">Chinese New Year 2026</h2>
+            <p class="year-info">Year of the Horse</p>
+        </header>
+
+        <section class="countdown-section" id="countdownSection">
+            <div class="timer" id="timer">
+                <div class="time-block">
+                    <span id="days">00</span>
+                    <label>Days</label>
+                </div>
+                <div class="time-block">
+                    <span id="hours">00</span>
+                    <label>Hours</label>
+                </div>
+                <div class="time-block">
+                    <span id="minutes">00</span>
+                    <label>Minutes</label>
+                </div>
+                <div class="time-block">
+                    <span id="seconds">00</span>
+                    <label>Seconds</label>
+                </div>
+            </div>
+            <p class="status-text">Preparing the celebration...</p>
+        </section>
+
+        <section class="video-section hidden" id="videoSection">
+            <div class="video-container">
+                <div id="player"></div>
+            </div>
+            <div class="celebration-msg">
+                <h1 class="glow-text">HAPPY NEW YEAR!</h1>
+                <p>May the Year of the Horse bring you strength, speed, and success.</p>
+                <button class="btn-primary" onclick="restartCelebration()">Replay Fireworks</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Audio (Optional) -->
+    <audio id="fireworkSound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
