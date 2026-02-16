@@ -12,6 +12,29 @@ const lanternContainer = document.getElementById('lanternContainer');
 const fireworkSound = document.getElementById('fireworkSound');
 const musicToggle = document.getElementById('musicToggle');
 
+const greetings = [
+    "Chúc mừng năm mới! Vạn sự như ý - An khang thịnh vượng. 🧧",
+    "Chúc bạn một năm mới dồi dào sức khỏe, làm ăn phát tài, tiền vào như nước. 💰",
+    "Sống cho thỏa chí đa mang, năm mới sung túc, bình an mọi đường. ✨",
+    "Tấn tài tấn lộc - Công thành danh toại. Chúc mừng năm mới! 🎆",
+    "Chúc bạn và gia đình một năm mới bình an, hạnh phúc và tràn đầy niềm vui. ❤️",
+    "Năm mới thắng lợi mới, vạn dặm bình an, hạnh phúc tràn đầy. 🐎",
+    "Mừng xuân Ất Tỵ, chúc bạn vạn sự hanh thông, tỷ sự như mơ. 🎊",
+    "Năm mới sung túc, tiền bạc đầy túi, tình yêu đầy tim! 💘"
+];
+
+function displayRandomGreeting() {
+    const textEl = document.getElementById('randomGreeting');
+    const randomIdx = Math.floor(Math.random() * greetings.length);
+
+    // Add a small fade effect via JS if you want, but CSS handles it better usually
+    textEl.style.opacity = 0;
+    setTimeout(() => {
+        textEl.innerText = greetings[randomIdx];
+        textEl.style.opacity = 1;
+    }, 200);
+}
+
 let player;
 let bgMusicPlayer;
 let countdownStarted = false;
@@ -198,6 +221,8 @@ function drawConfetti() {
 // Init
 createLanterns();
 createBlossoms();
+displayRandomGreeting();
+setInterval(displayRandomGreeting, 10000); // Auto change every 10s
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
