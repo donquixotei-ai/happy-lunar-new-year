@@ -10,16 +10,20 @@ const countdownSection = document.getElementById('countdownSection');
 const videoSection = document.getElementById('videoSection');
 const lanternContainer = document.getElementById('lanternContainer');
 const fireworkSound = document.getElementById('fireworkSound');
+const musicToggle = document.getElementById('musicToggle');
 
 let player;
+let bgMusicPlayer;
 let countdownStarted = false;
+let isPlaying = false;
 
 // YouTube IFrame API Ready
 function onYouTubeIframeAPIReady() {
+    // Firework Player
     player = new YT.Player('player', {
         height: '360',
         width: '640',
-        videoId: 'W0nL940nSjk', // HK 2024 Fireworks Spectacular
+        videoId: 'sX6z6fI-S8M', // Saigon 2024 Fireworks Spectacular
         playerVars: {
             'autoplay': 0,
             'controls': 1,
@@ -28,6 +32,18 @@ function onYouTubeIframeAPIReady() {
         },
         events: {
             'onReady': onPlayerReady
+        }
+    });
+
+    // Background Music Player
+    bgMusicPlayer = new YT.Player('musicPlayer', {
+        height: '0',
+        width: '0',
+        videoId: 'IQlBt_BEWfg', // Nhạc Tết Remix 2024
+        playerVars: {
+            'autoplay': 0,
+            'loop': 1,
+            'playlist': 'IQlBt_BEWfg'
         }
     });
 }
@@ -48,6 +64,20 @@ function createLanterns() {
         lantern.style.width = (Math.random() * 20 + 40) + 'px';
         lantern.style.height = (parseFloat(lantern.style.width) * 1.33) + 'px';
         lanternContainer.appendChild(lantern);
+    }
+}
+
+// Create Hoa Mai (Blossoms)
+function createBlossoms() {
+    for (let i = 0; i < 20; i++) {
+        const blossom = document.createElement('div');
+        blossom.className = 'blossom';
+        blossom.style.left = Math.random() * 100 + 'vw';
+        blossom.style.top = -20 + 'px';
+        blossom.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        blossom.style.animationDelay = (Math.random() * 10) + 's';
+        blossom.style.opacity = Math.random() * 0.7 + 0.3;
+        lanternContainer.appendChild(blossom);
     }
 }
 
@@ -79,6 +109,14 @@ function startCelebration() {
     countdownSection.classList.add('hidden');
     videoSection.classList.remove('hidden');
 
+    // Pause background music if it's playing to let fireworks sound take over
+    if (bgMusicPlayer && bgMusicPlayer.pauseVideo) {
+        bgMusicPlayer.pauseVideo();
+        musicToggle.classList.remove('playing');
+        musicToggle.querySelector('.text').innerText = 'Play Tết Music';
+        isPlaying = false;
+    }
+
     // Play Video
     if (player && player.playVideo) {
         player.playVideo();
@@ -89,6 +127,21 @@ function startCelebration() {
 
     // Trigger Confetti
     startConfetti();
+}
+
+function toggleMusic() {
+    if (!bgMusicPlayer) return;
+
+    if (isPlaying) {
+        bgMusicPlayer.pauseVideo();
+        musicToggle.classList.remove('playing');
+        musicToggle.querySelector('.text').innerText = 'Play Tết Music';
+    } else {
+        bgMusicPlayer.playVideo();
+        musicToggle.classList.add('playing');
+        musicToggle.querySelector('.text').innerText = 'Tết Music Playing...';
+    }
+    isPlaying = !isPlaying;
 }
 
 function restartCelebration() {
@@ -144,6 +197,7 @@ function drawConfetti() {
 
 // Init
 createLanterns();
+createBlossoms();
 setInterval(updateCountdown, 1000);
 updateCountdown();
 

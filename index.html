@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lunar New Year Countdown 2026 | Year of the Horse</title>
-    <meta name="description" content="Witness the spectacular countdown to the Chinese New Year 2026. Join us for a dazzling display of tradition and light.">
+    <title>Happy Lunar New Year xD | Tết Nguyên Đán 2026</title>
+    <meta name="description"
+        content="Witness the spectacular countdown to the Chinese New Year 2026. Join us for a dazzling display of tradition and light.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Montserrat:wght@300;400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="overlay"></div>
-    
+
     <!-- Background Lanterns -->
     <div class="lantern-container" id="lanternContainer"></div>
 
+    <!-- Background Music Player (Hidden) -->
+    <div id="musicPlayer" class="hidden"></div>
+    <button id="musicToggle" class="music-btn" onclick="toggleMusic()">
+        <span class="icon">🎵</span>
+        <span class="text">Play Tết Music</span>
+    </button>
+
     <main class="container">
         <header class="header animate-fade-in">
-            <h1 class="chinese-title">新年快乐</h1>
-            <h2 class="sub-title">Chinese New Year 2026</h2>
-            <p class="year-info">Year of the Horse</p>
+            <h1 class="chinese-title">Chúc Mừng Năm Mới</h1>
+            <h2 class="sub-title">Happy Lunar New Year xD</h2>
+            <p class="year-info">Tết Nguyên Đán 2026 - Year of the Horse</p>
         </header>
 
         <section class="countdown-section" id="countdownSection">
@@ -51,9 +62,10 @@
                 <div id="player"></div>
             </div>
             <div class="celebration-msg">
-                <h1 class="glow-text">HAPPY NEW YEAR!</h1>
-                <p>May the Year of the Horse bring you strength, speed, and success.</p>
-                <button class="btn-primary" onclick="restartCelebration()">Replay Fireworks</button>
+                <h1 class="glow-text">CHÚC MỪNG NĂM MỚI!</h1>
+                <p>May the Year of the Horse bring you and your family ultimate health, wealth, and prosperity.</p>
+                <div class="viet-tagline">Vạn Sự Như Ý - An Khang Thịnh Vượng</div>
+                <button class="btn-primary" onclick="restartCelebration()">Replay Vietnamese Fireworks</button>
             </div>
         </section>
     </main>
@@ -62,9 +74,11 @@
     <canvas id="confettiCanvas"></canvas>
 
     <!-- Audio (Optional) -->
-    <audio id="fireworkSound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" preload="auto"></audio>
+    <audio id="fireworkSound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"
+        preload="auto"></audio>
 
     <script src="script.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
 </body>
+
 </html>
